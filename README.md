@@ -1,6 +1,6 @@
 # restaurantCLIENT
 
-Last commit front-end application:
+Last commit back-end application:
 https://github.com/marcinPluciennik/restaurantREST/commit/4fd031b83403b1f3abcf1bcf9c1fdf349122de59
 
 1.Run RestaurantRestApplication
