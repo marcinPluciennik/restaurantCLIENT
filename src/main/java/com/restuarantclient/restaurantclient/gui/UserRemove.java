@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-@Route("8-remove-user")
+@Route("user-remove")
 public class UserRemove extends VerticalLayout {
 
     private UserRestController userRestController;

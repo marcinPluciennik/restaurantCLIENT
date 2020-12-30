@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-@Route("7-remove-review")
+@Route("review-remove")
 public class ReviewRemove extends VerticalLayout {
 
     private ReviewsRestController reviewsRestController;

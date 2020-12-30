@@ -9,7 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("5-reviews-show")
+@Route("reviews-show")
 public class ReviewsShow extends VerticalLayout {
 
     private ReviewsRestController reviewsRestController;

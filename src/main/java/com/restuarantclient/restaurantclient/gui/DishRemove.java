@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-@Route("4-remove-dish")
+@Route("dish-remove")
 public class DishRemove extends VerticalLayout {
 
     private DishRestController dishRestController;

@@ -12,7 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("6-add-user")
+@Route("user-add")
 public class UserAdd extends VerticalLayout {
 
     private UserRestController userRestController;

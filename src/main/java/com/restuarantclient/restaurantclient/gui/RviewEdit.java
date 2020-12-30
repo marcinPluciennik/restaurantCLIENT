@@ -13,7 +13,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("7-edit-review")
+@Route("review-edit")
 public class RviewEdit extends VerticalLayout {
 
     private ReviewsRestController reviewsRestController;

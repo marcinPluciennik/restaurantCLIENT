@@ -12,7 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("6-add-review")
+@Route("review-add")
 public class ReviewAdd extends VerticalLayout {
 
     private ReviewsRestController reviewsRestController;
