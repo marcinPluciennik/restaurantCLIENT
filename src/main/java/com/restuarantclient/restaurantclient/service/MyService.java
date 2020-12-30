@@ -8,13 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class DishService {
-
-    private RestTemplate restTemplate;
-
-    public DishService() {
-        this.restTemplate = new RestTemplate();
-    }
+public class MyService {
 
     public Long convertToLong(Object o){
         String stringToConvert = String.valueOf(o);

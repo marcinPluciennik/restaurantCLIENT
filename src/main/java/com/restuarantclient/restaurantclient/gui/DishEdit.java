@@ -2,7 +2,7 @@ package com.restuarantclient.restaurantclient.gui;
 
 import com.restuarantclient.restaurantclient.controller.DishRestController;
 import com.restuarantclient.restaurantclient.model.Dish;
-import com.restuarantclient.restaurantclient.service.DishService;
+import com.restuarantclient.restaurantclient.service.MyService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -16,13 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 
 @Route("3-edit-dish")
-public class EditDish extends VerticalLayout {
+public class DishEdit extends VerticalLayout {
 
     private DishRestController dishRestController;
-    private DishService service;
+    private MyService service;
 
     @Autowired
-    public EditDish(DishRestController dishRestController, DishService service) {
+    public DishEdit(DishRestController dishRestController, MyService service) {
         this.dishRestController = dishRestController;
         this.service = service;
 
@@ -82,9 +82,6 @@ public class EditDish extends VerticalLayout {
                     dialog.open();
                 }
             }
-
-
-
         });
         add(label, textFieldId, textFieldName, textFieldPrice, buttonEdit);
     }

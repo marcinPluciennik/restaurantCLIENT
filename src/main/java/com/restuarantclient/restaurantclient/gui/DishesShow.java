@@ -15,8 +15,8 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("1-restaurant-menu")
-public class ShowDishes extends VerticalLayout {
+@Route("1-restaurant-menu-start-page")
+public class DishesShow extends VerticalLayout {
 
     private DishRestController dishRestController;
     private TempRestController tempRestController;
@@ -25,7 +25,7 @@ public class ShowDishes extends VerticalLayout {
 
 
     @Autowired
-    public ShowDishes(DishRestController dishRestController, TempRestController tempRestController) {
+    public DishesShow(DishRestController dishRestController, TempRestController tempRestController) {
         this.dishRestController = dishRestController;
         this.tempRestController = tempRestController;
 

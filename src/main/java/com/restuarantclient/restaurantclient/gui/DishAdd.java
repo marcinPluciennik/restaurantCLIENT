@@ -15,12 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 
 @Route("2-add-dish")
-public class AddDish extends VerticalLayout {
+public class DishAdd extends VerticalLayout {
 
     private DishRestController dishRestController;
 
     @Autowired
-    public AddDish(DishRestController dishRestController) {
+    public DishAdd(DishRestController dishRestController) {
         this.dishRestController = dishRestController;
 
         Label label = new Label();

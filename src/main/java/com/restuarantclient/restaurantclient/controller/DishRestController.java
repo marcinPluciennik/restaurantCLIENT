@@ -2,7 +2,7 @@ package com.restuarantclient.restaurantclient.controller;
 
 import com.restuarantclient.restaurantclient.dao.DishDao;
 import com.restuarantclient.restaurantclient.model.Dish;
-import com.restuarantclient.restaurantclient.service.DishService;
+import com.restuarantclient.restaurantclient.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +15,13 @@ import java.util.Optional;
 @RequestMapping("/dishes")
 public class DishRestController {
 
-    private DishService dishService;
+    private MyService service;
 
     private DishDao dishDao;
 
     @Autowired
-    public DishRestController(DishService dishService, DishDao dishDao) {
-        this.dishService = dishService;
+    public DishRestController(MyService service, DishDao dishDao) {
+        this.service = service;
         this.dishDao = dishDao;
     }
 
