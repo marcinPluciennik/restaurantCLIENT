@@ -1,7 +1,6 @@
 package com.restuarantclient.restaurantclient.controller;
 
 import com.restuarantclient.restaurantclient.dao.UserDao;
-import com.restuarantclient.restaurantclient.model.Dish;
 import com.restuarantclient.restaurantclient.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

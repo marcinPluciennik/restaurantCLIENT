@@ -65,7 +65,6 @@ public class DishAdd extends VerticalLayout {
                 }
             }
         });
-
         add(label, textFieldMName, textFieldPrice, buttonAdd);
     }
 }

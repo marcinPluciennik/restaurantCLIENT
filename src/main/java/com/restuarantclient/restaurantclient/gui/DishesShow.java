@@ -23,7 +23,6 @@ public class DishesShow extends VerticalLayout {
     Grid<Dish> grid = new Grid<>(Dish.class);
     TextField filter = new TextField();
 
-
     @Autowired
     public DishesShow(DishRestController dishRestController, TempRestController tempRestController) {
         this.dishRestController = dishRestController;
@@ -54,7 +53,6 @@ public class DishesShow extends VerticalLayout {
         grid.setColumns("dishId", "name","price");
 
         add(componentInfo, label, filter, grid);
-
     }
 
     private void update() {

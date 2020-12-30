@@ -13,7 +13,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 @Route("7-edit-user")
 public class UserEdit extends VerticalLayout {
 
