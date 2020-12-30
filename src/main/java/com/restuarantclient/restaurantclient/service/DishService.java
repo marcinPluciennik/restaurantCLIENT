@@ -16,13 +16,6 @@ public class DishService {
         this.restTemplate = new RestTemplate();
     }
 
-    public List<Dish> getDishes(){
-        Dish[] dishes = restTemplate.getForObject(
-                "http://localhost:8080/dishes/getDishes",
-                Dish[].class);
-        return Arrays.asList(dishes);
-    }
-
     public Long convertToLong(Object o){
         String stringToConvert = String.valueOf(o);
         Long convertedLong = Long.parseLong(stringToConvert);
