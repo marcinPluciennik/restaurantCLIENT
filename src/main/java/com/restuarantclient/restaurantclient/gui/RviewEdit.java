@@ -1,6 +1,7 @@
 package com.restuarantclient.restaurantclient.gui;
 
-import com.restuarantclient.restaurantclient.controller.DishRestController;
+import com.restuarantclient.restaurantclient.controller.ReviewsRestController;
+import com.restuarantclient.restaurantclient.model.Review;
 import com.restuarantclient.restaurantclient.service.MyService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
@@ -12,32 +13,33 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.math.BigDecimal;
+@Route("7-edit-review")
+public class RviewEdit extends VerticalLayout {
 
-@Route("4-remove-dish")
-public class DishRemove extends VerticalLayout {
-
-    private DishRestController dishRestController;
+    private ReviewsRestController reviewsRestController;
     private MyService service;
 
     @Autowired
-    public DishRemove(DishRestController dishRestController, MyService service) {
-        this.dishRestController = dishRestController;
+    public RviewEdit(ReviewsRestController reviewsRestController, MyService service) {
+        this.reviewsRestController = reviewsRestController;
         this.service = service;
 
         Label label = new Label();
-        label.add("REMOVE DISH FROM MENU:");
+        label.add("EDIT EXISTING REVIEW:");
 
-        TextField textFieldId= new TextField("ID");
-        Button buttonRemove = new Button("Remove dish");
+        TextField textFieldId = new TextField("ID");
+        TextField textFieldRating = new TextField("Rating");
+        TextField textFieldText = new TextField("Text");
+        Button buttonEdit = new Button("Edit review");
+
         Dialog dialog = new Dialog();
         dialog.setCloseOnEsc(false);
         dialog.setCloseOnOutsideClick(false);
 
-        buttonRemove.addClickListener(clickEvent -> {
-
-            if (textFieldId.getValue().isEmpty()){
-                dialog.add(new Text("The field ID cannot be empty! "));
+        buttonEdit.addClickListener(clickEvent -> {
+            if (textFieldRating.getValue().isEmpty() || textFieldText.getValue().isEmpty() ||
+                    textFieldId.getValue().isEmpty()){
+                dialog.add(new Text("Sorry, at least one of the fields is empty! "));
                 Button refreshButton = new Button("Close", event -> {
                     UI.getCurrent().getPage().reload();
                     dialog.close();
@@ -45,12 +47,13 @@ public class DishRemove extends VerticalLayout {
                 dialog.add(refreshButton);
                 dialog.open();
             }else{
-
                 try{
-                    new BigDecimal(String.valueOf(textFieldId.getValue()));
-                    boolean result = dishRestController.removeDishById(service.convertToLong(textFieldId.getValue()));
+                    Review review = new Review(service.convertToLong(textFieldId.getValue()), textFieldText.getValue(),
+                            Integer.parseInt(textFieldRating.getValue()));
+                    boolean result = reviewsRestController.removeReviewById(review.getReviewId());
                     if (result){
-                        dialog.add(new Text("Dish has been removed! "));
+                        reviewsRestController.addReview(review);
+                        dialog.add(new Text("Review has been edited! "));
                         Button refreshButton = new Button("Close", event -> {
                             UI.getCurrent().getPage().reload();
                             dialog.close();
@@ -58,7 +61,7 @@ public class DishRemove extends VerticalLayout {
                         dialog.add(refreshButton);
                         dialog.open();
                     }else{
-                        dialog.add(new Text("ERROR, there is no id " + textFieldId.getValue() + "!"));
+                        dialog.add(new Text("ERROR, there is no id like " + textFieldId.getValue() + "! "));
                         Button refreshButton = new Button("Close", event -> {
                             UI.getCurrent().getPage().reload();
                             dialog.close();
@@ -67,7 +70,7 @@ public class DishRemove extends VerticalLayout {
                         dialog.open();
                     }
                 }catch (NumberFormatException e){
-                    dialog.add(new Text(" Sorry, id must be a number! "));
+                    dialog.add(new Text(" Sorry, id and rating must be a number! "));
                     Button refreshButton = new Button("Close", event -> {
                         UI.getCurrent().getPage().reload();
                         dialog.close();
@@ -77,6 +80,6 @@ public class DishRemove extends VerticalLayout {
                 }
             }
         });
-        add(label, textFieldId, buttonRemove);
+        add(label, textFieldId, textFieldRating, textFieldText, buttonEdit);
     }
 }

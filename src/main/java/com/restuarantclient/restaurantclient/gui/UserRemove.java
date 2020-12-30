@@ -67,7 +67,7 @@ public class UserRemove extends VerticalLayout {
                         dialog.open();
                     }
                 }catch (NumberFormatException e){
-                    dialog.add(new Text(" Sorry, price must be a number! "));
+                    dialog.add(new Text(" Sorry, id must be a number! "));
                     Button refreshButton = new Button("Close", event -> {
                         UI.getCurrent().getPage().reload();
                         dialog.close();

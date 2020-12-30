@@ -1,6 +1,6 @@
 package com.restuarantclient.restaurantclient.gui;
 
-import com.restuarantclient.restaurantclient.controller.DishRestController;
+import com.restuarantclient.restaurantclient.controller.ReviewsRestController;
 import com.restuarantclient.restaurantclient.service.MyService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
@@ -14,28 +14,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
-@Route("4-remove-dish")
-public class DishRemove extends VerticalLayout {
+@Route("7-remove-review")
+public class ReviewRemove extends VerticalLayout {
 
-    private DishRestController dishRestController;
+    private ReviewsRestController reviewsRestController;
     private MyService service;
 
     @Autowired
-    public DishRemove(DishRestController dishRestController, MyService service) {
-        this.dishRestController = dishRestController;
+    public ReviewRemove(ReviewsRestController reviewsRestController, MyService service) {
+        this.reviewsRestController = reviewsRestController;
         this.service = service;
 
         Label label = new Label();
-        label.add("REMOVE DISH FROM MENU:");
+        label.add("REMOVE REVIEW BY ID:");
 
         TextField textFieldId= new TextField("ID");
-        Button buttonRemove = new Button("Remove dish");
+        Button buttonRemove = new Button("Remove review");
         Dialog dialog = new Dialog();
         dialog.setCloseOnEsc(false);
         dialog.setCloseOnOutsideClick(false);
 
         buttonRemove.addClickListener(clickEvent -> {
-
             if (textFieldId.getValue().isEmpty()){
                 dialog.add(new Text("The field ID cannot be empty! "));
                 Button refreshButton = new Button("Close", event -> {
@@ -48,9 +47,9 @@ public class DishRemove extends VerticalLayout {
 
                 try{
                     new BigDecimal(String.valueOf(textFieldId.getValue()));
-                    boolean result = dishRestController.removeDishById(service.convertToLong(textFieldId.getValue()));
+                    boolean result = reviewsRestController.removeReviewById(service.convertToLong(textFieldId.getValue()));
                     if (result){
-                        dialog.add(new Text("Dish has been removed! "));
+                        dialog.add(new Text("Review has been removed! "));
                         Button refreshButton = new Button("Close", event -> {
                             UI.getCurrent().getPage().reload();
                             dialog.close();
